@@ -1,9 +1,12 @@
 //Include the express library
-const express = require("express")
+// const express = require("express")
+import express from 'express'
 //Include the morgan middleware
-const morgan = require("morgan")
+// const morgan = require("morgan")
+import morgan from 'morgan'
 //Include the cors middleware
-const cors = require("cors")
+// const cors = require("cors")
+import cors from 'cors'
 
 //Create a new express application
 const app = express()
@@ -15,4 +18,4 @@ app.use(cors())
 //Tell express to parse JSON in the request body
 app.use(express.json())
 
-module.exports = app
+export default app
