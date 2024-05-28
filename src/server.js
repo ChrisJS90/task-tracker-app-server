@@ -17,5 +17,6 @@ app.use(morgan("dev"))
 app.use(cors())
 //Tell express to parse JSON in the request body
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 export default app
