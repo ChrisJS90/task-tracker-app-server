@@ -8,6 +8,9 @@ import morgan from 'morgan'
 // const cors = require("cors")
 import cors from 'cors'
 
+import userRouter from './routes/user.js'
+import taskRouter from './routes/task.js'
+
 //Create a new express application
 const app = express()
 
@@ -18,5 +21,8 @@ app.use(cors())
 //Tell express to parse JSON in the request body
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+
+app.use('/users', userRouter)
+app.use('/tasks', taskRouter)
 
 export default app
