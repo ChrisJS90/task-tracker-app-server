@@ -1,12 +1,33 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
+import env from "node:process";
+import bcrypt from "bcrypt"
+
+const pass1 = await bcrypt.hash(process.env.PASS1, 10)
+const pass2 = await bcrypt.hash(process.env.PASS2, 20)
+
+// const testguy = {
+//     name: "TestBoy",
+//     email: "test@test.com",
+//     password: `${pass1}`,
+//     phone: "123456789",
+//     role: "Admin",
+// }
+
+// const testgirl = {
+//     name: "TestGirl",
+//     email: "test2@test.com",
+//     password: `${pass2}`,
+//     phone: "123456789",
+//     role: "Admin",
+// }
 
 async function seed() {
     const testGuy = await prisma.user.create({
         data: {
             name: "TestBoy",
             email: "test@test.com",
-            password: "testpassword",
+            password: `${pass1}`,
             phone: "123456789",
             role: "Admin",
         }
@@ -18,7 +39,7 @@ async function seed() {
         data: {
             name: "TestGirl",
             email: "test2@test.com",
-            password: "testpassword",
+            password: `${pass2}`,
             phone: "123456789",
             role: "Admin",
         }

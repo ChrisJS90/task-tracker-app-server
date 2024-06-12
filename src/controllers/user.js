@@ -13,7 +13,17 @@ export const getAll = async(req, res) => {
 }
 
 export const newUser = async(req, res) => {
-    
+    const { name, email, password, phone, role } = req.body
+    const user = {
+        name: name,
+        email: email,
+        password: password,
+        phone: phone,
+        role: role
+    }    
+
+    createUser(user.name, user.email, user.password, user.phone, user.role)
+    return sendDataResponse(res, 200, user)
 }
 
 export const login = async(req, res) => {
