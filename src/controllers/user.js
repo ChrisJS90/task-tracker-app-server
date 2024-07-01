@@ -45,7 +45,7 @@ export const login = async(req, res) => {
             if(result){
                 
                 const token = jwt.sign({email}, secret, {expiresIn: "14d"})
-                res.send({token})
+                sendDataResponse(res, 200, { token, user})
             
             } else {
                 console.log('Caught no password')
